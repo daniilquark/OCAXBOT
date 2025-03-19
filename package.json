@@ -1,0 +1,26 @@
+{
+  "name": "ocaxbot",
+  "version": "1.0.0",
+  "description": "An online assistant designed to help you stick to your daily routine, track your tasks, send reminders, and analyze all the data mentioned above.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniilquark/OCAXBOT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniilquark/OCAXBOT/issues"
+  },
+  "homepage": "https://github.com/daniilquark/OCAXBOT#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pg": "^8.14.1"
+  }
+}
