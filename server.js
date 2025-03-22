@@ -19,9 +19,6 @@ app.use(bodyParser.json());
 const webhookRoutes = require('./routes/webhook');
 app.use('/', webhookRoutes);
 
-// Mappings
-require('./routes/webhookToMessages');
-
 // HTTPS server
 https.createServer(options, app).listen(port, '0.0.0.0', () => {
   console.log(`by https://daniilquark.com:${port}`);
