@@ -2,7 +2,7 @@
   "name": "ocaxbot",
   "version": "1.0.0",
   "description": "An online assistant designed to help you stick to your daily routine, track your tasks, send reminders, and analyze all the data mentioned above.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
