@@ -2,6 +2,8 @@ import { Router, Request, Response } from 'express';
 import client from '../db/client';
 import webhookToMessages from './webhookToMessages';
 import checkAndNotifyHashtag from './checkAndNotifyHashtag';
+import webhookToUsers from './webhookToUsers';
+import webhookToChats from './webhookToChats';
 
 const router = Router();
 
@@ -25,6 +27,8 @@ router.post('/tgwh', async (req: Request, res: Response) => {
 
     await webhookToMessages();
     await checkAndNotifyHashtag();
+    await webhookToUsers();
+    await webhookToChats();
 
     res.status(200).json({
       message: 'Data received and saved',
