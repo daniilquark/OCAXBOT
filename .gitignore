@@ -203,6 +203,7 @@ pnpm-debug.log*
 Thumbs.db
 
 # Build artifacts
+oldjs/
 dist/
 build/
 .cache/
