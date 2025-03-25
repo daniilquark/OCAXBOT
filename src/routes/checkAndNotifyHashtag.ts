@@ -16,7 +16,7 @@ interface MessageRow {
   message_id: number;
   text: string;
   chat_id: number;
-  reply_thread_id: number;
+  reply_thread_id: number | null; // теперь может быть null
 }
 
 async function checkAndNotifyHashtag(): Promise<void> {
@@ -26,7 +26,6 @@ async function checkAndNotifyHashtag(): Promise<void> {
       FROM messages
       WHERE text ILIKE '%#test%'
         AND chat_id IS NOT NULL
-        AND reply_thread_id IS NOT NULL
         AND (reaction_by_hashtag IS NULL OR reaction_by_hashtag = false)
     `);
 
@@ -35,13 +34,16 @@ async function checkAndNotifyHashtag(): Promise<void> {
     for (const row of rows) {
       const { chat_id, reply_thread_id, message_id } = row;
 
-      await axios.get(`${TELEGRAM_API_BASE}/sendMessage`, {
-        params: {
-          chat_id: chat_id,
-          message_thread_id: reply_thread_id,
-          text: 'Хештег пойман и прочитан!',
-        },
-      });
+      const params: any = {
+        chat_id,
+        text: 'Хештег пойман и прочитан!',
+      };
+
+      if (reply_thread_id !== null) {
+        params.message_thread_id = reply_thread_id;
+      }
+
+      await axios.get(`${TELEGRAM_API_BASE}/sendMessage`, { params });
 
       console.log(`✅ Сообщение отправлено (message_id=${message_id})`);
 
