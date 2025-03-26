@@ -26,7 +26,6 @@ router.post('/tgwh', async (req: Request, res: Response) => {
     await client.query(insertQuery, values);
 
     await webhookToMessages();
-    await checkAndNotifyHashtag();
     await webhookToUsers();
     await webhookToChats();
 
